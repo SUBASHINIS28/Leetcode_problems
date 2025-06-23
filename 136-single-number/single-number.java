@@ -1,11 +1,11 @@
 class Solution {
-    public int singleNumber(int[] nums) 
-    {
+    public int singleNumber(int[] nums) {
         int result=0;
-        for(int num:nums)
+        for(int i=0;i<nums.length;i++)
         {
-            result=result^num;
+            result=result^nums[i];
         }
         return result;
+        
     }
 }
