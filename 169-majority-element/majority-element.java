@@ -3,20 +3,13 @@ class Solution {
     {
         int count=0;
         int cand=0;
-        for(int i=0;i<nums.length;i++)
+        for(int num:nums)
         {
             if(count==0)
             {
-                cand=nums[i];
+                cand=num;
             }
-            if(cand==nums[i])
-            {
-                count++;
-            }
-            else
-            {
-                count--;
-            }
+            count += (num==cand) ?1:-1;
         }
         return cand;
     }
