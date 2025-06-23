@@ -1,11 +1,11 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int unique=0;
-        for(int suba:nums)
+        int result=0;
+        for( int num:nums)
         {
-            unique^=suba;
+            result=result^num;
         }
-    return unique;
         
+       return result; 
     }
 }
