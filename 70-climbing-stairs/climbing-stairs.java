@@ -1,5 +1,4 @@
-class Solution
- {
+class Solution {
     public int climbStairs(int n) 
     {
         if(n<=2)
@@ -11,9 +10,9 @@ class Solution
         int current=0;
         for(int i=3;i<=n;i++)
         {
-         current=one+two;
-         two=one;
-         one=current;
+            current=one+two;
+            two=one;
+            one=current;
         }
         return current;
     }
