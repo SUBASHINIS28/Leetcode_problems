@@ -1,17 +1,18 @@
-class Solution {
+class Solution 
+{
     public int findKthPositive(int[] arr, int k) 
     {
-        for (int i : arr) 
+       for(int i:arr) 
+       {
+        if(i<=k)
         {
-            if (i <= k) 
-            {
-                k++;
-            } 
-            else 
-            {
-                break;
-            }
+            k++;
         }
-        return k;
+        else
+        {
+            break;
+        }
+       }
+       return k;
     }
 }
