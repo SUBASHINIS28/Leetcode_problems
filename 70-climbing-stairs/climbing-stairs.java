@@ -1,19 +1,20 @@
-class Solution {
+class Solution 
+{
     public int climbStairs(int n) 
     {
-        if(n<=2)
+        if(n<=1)
         {
-            return n;
+            return 1;
         }
-        int one=2;
-        int two=1;
-        int current=0;
-        for(int i=3;i<=n;i++)
+        int a=1;
+        int b=1;
+        int c=0;
+        for(int i=2;i<=n;i++)
         {
-            current=one+two;
-            two=one;
-            one=current;
+            c=a+b;
+            a=b;
+            b=c;
         }
-        return current;
+        return c;
     }
 }
