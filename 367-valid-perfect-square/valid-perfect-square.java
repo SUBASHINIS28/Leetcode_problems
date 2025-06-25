@@ -1,4 +1,5 @@
-class Solution {
+class Solution
+ {
     public boolean isPerfectSquare(int num) 
     {
         long x=num;
@@ -6,6 +7,6 @@ class Solution {
         {
             x=(x+num/x)/2;
         }
-        return x*x==num;
+        return(x*x==num);
     }
 }
