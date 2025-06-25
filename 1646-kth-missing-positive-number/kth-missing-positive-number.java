@@ -1,5 +1,6 @@
-class Solution {
-    public int findKthPositive(int[] arr, int k)
+class Solution 
+{
+    public int findKthPositive(int[] arr, int k) 
     {
         for(int i:arr)
         {
