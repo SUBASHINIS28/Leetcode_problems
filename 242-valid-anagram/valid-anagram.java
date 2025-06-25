@@ -10,6 +10,7 @@ class Solution {
 
         Arrays.sort(sArr);
         Arrays.sort(tArr);
+        
         return Arrays.equals(sArr,tArr);
     }
 }
