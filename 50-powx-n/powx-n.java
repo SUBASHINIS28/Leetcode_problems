@@ -1,18 +1,23 @@
 class Solution {
-    public double myPow(double x, int n) {
-        long N = n; // Use long to handle edge case like Integer.MIN_VALUE
-        if (N < 0) {
-            x = 1 / x;
+    public double myPow(double x, int n) 
+    {
+        long N = n;
+        if(N<0)
+        {
+            x = 1/x;
             N = -N;
         }
-        double result = 1.0;
-        while (N > 0) {
-            if ((N % 2) == 1) {
-                result *= x;
-            }
-            x *= x;
-            N /= 2;
+        double result =1.0;
+        while (N>0)
+        {
+            if((N%2==1))
+          {
+            result *=x;
+          }
+        x=x*x;
+        N=N/2;
         }
-        return result;
+    return result;
+
     }
 }
