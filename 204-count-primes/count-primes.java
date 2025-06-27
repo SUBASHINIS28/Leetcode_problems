@@ -5,7 +5,7 @@ class Solution {
         {
             return 0;
         }
-        n=n-1;
+        n = n-1;
         int count = n-1;
         boolean[] isPrime = new boolean[n+1];
         Arrays.fill(isPrime,true);
