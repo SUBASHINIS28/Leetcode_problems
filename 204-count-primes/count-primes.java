@@ -1,7 +1,7 @@
 class Solution {
     public int countPrimes(int n) 
     {
-        if(n==0 || n==1 || n==2)
+        if( n==0 || n==1 || n==2)
         {
             return 0;
         }
@@ -9,8 +9,8 @@ class Solution {
         int count = n-1;
         boolean[] isPrime = new boolean[n+1];
         Arrays.fill(isPrime,true);
-        isPrime[0]=false;
-        isPrime[1]=false;
+        isPrime[0] =  false;
+        isPrime[1] = false;
         int i,j;
         for(i=2;i<=Math.sqrt(n);i++)
         {
