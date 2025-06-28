@@ -1,8 +1,8 @@
 class Solution {
-    public String minRemoveToMakeValid(String s)
+    public String minRemoveToMakeValid(String s) 
     {
         Stack<Integer> stack = new Stack<>();
-        StringBuilder str = new StringBuilder(s);
+        StringBuilder str  = new StringBuilder(s);
         for(int i=0;i<str.length();i++)
         {
             char c = str.charAt(i);
@@ -15,22 +15,20 @@ class Solution {
                 if(stack.empty())
                 {
                     str.deleteCharAt(i);
-                    i=i-1;
+                    i -= 1;
                 }
                 if(!stack.empty())
                 {
                     stack.pop();
                 }
+                
             }
-
         }
         while(!stack.empty())
         {
             str.deleteCharAt(stack.peek());
             stack.pop();
-
         }
         return str.toString();
-        
     }
 }
