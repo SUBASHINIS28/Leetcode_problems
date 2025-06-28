@@ -8,13 +8,12 @@ class Solution {
         int total = 10;
         int unique = 9;
         int available = 9;
-        for(int i=2;i<=n && available>0;i++)
+        for(int i=2;i<=n&&available>0;i++)
         {
-           unique *=available; 
-           total +=unique;
-           available --;
+            unique *=available;
+            total +=unique;
+            available --;
         }
         return total;
-        
     }
 }
