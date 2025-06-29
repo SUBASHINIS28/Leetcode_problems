@@ -2,27 +2,25 @@ class Solution {
     public int maxPoints(int[][] points) 
     {
         int n = points.length;
-        if(n<=2)
-        {
-            return n;
-        }
-        int max =0;
-        for(int i=0;i<n;i++)
+        if(n<=2) return n;
+        int max = 0;
+        for(int i = 0;i<n;i++)
         {
             Map<String,Integer> slopeMap = new HashMap<>();
             int same = 1;
-            int localmax =0;
+            int LocalMax = 0;
             for(int j=i+1;j<n;j++)
             {
-                int dx =  points[j][0]-points[i][0];
-                int dy =  points[j][1]-points[i][1];
-                if(dx == 0 && dy == 0)
+
+                int dx = points[j][0] - points[i][0];
+                int dy = points[j][1] - points[i][1];
+                if(dx == 0 && dy== 0)
                 {
                     same++;
                 }
                 else
                 {
-                    int gcd = gcd (dy,dx);
+                    int gcd = gcd(dy,dx);
                     dy /= gcd;
                     dx /= gcd;
                     if(dx<0)
@@ -30,17 +28,18 @@ class Solution {
                         dx = -dx;
                         dy = -dy;
                     }
-                    String slope = dy +"/" + dx;
+                    String slope = dy + "/" + dx;
                     slopeMap.put(slope,slopeMap.getOrDefault(slope,0)+1);
-                    localmax = Math.max(localmax,slopeMap.get(slope));
+                    LocalMax = Math.max(LocalMax,slopeMap.get(slope));
+
                 }
             }
-            max =Math.max(max,localmax+same);
+            max=Math.max(max,LocalMax+same);
         }
         return max;
-        
+
     }
-    private int gcd(int a, int b)
+    private int gcd(int a,int b)
     {
         if(b==0) return a;
         return gcd(b,a%b);
