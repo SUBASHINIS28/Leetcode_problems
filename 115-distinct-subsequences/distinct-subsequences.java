@@ -11,16 +11,14 @@ class Solution {
             {
                 if(a.charAt(i-1) == b.charAt(j-1))
                 {
-                    d[i][j] = d[i-1][j-1] + d[i-1][j];
+                    d[i][j] = d[i-1][j-1]+d[i-1][j];
                 }
-               else
-               {
-                   d[i][j] = d[i-1][j];
-               }
+                else
+                {
+                    d[i][j] = d[i-1][j];
+                }
             }
-            
         }
         return d[m][n];
     }
-       
 }
