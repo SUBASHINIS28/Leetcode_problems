@@ -3,15 +3,15 @@ class Solution {
     {
        Stack<Integer> stack = new Stack<>();
        int n = heights.length;
-       int max  = 0;
+       int max = 0;
        for(int i=0;i<=n;i++)
        {
-         int currentHeight = (i==n) ? 0 :  heights[i];
+         int currentHeight = (i==n) ?  0 : heights[i];
          while(!stack.isEmpty() && heights[stack.peek()] > currentHeight)
          {
-            int height = heights[stack.pop()];
-            int width = stack.isEmpty() ? i:i -stack.peek() -1;
-            max = Math.max(max,height*width);
+            int height =  heights[stack.pop()];
+            int width  = stack.isEmpty() ? i : i- stack.peek() -1;
+             max  = Math.max(max,height*width);
          }
          stack.push(i);
        }
