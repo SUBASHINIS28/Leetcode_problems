@@ -29,12 +29,12 @@ public class Solution {
         candidates.remove(num);
 
         // Find the closest
-        long minDiff = Long.MAX_VALUE;
+        long md = Long.MAX_VALUE;
         long closest = -1;
         for (long cand : candidates) {
             long diff = Math.abs(cand - num);
-            if (diff < minDiff || (diff == minDiff && cand < closest)) {
-                minDiff = diff;
+            if (diff < md || (diff == md && cand < closest)) {
+                md = diff;
                 closest = cand;
             }
         }
