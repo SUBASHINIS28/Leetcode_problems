@@ -3,23 +3,24 @@ class Solution {
     {
         int left = 0;
         int right = height.length-1;
-        int leftmax = height[left];
-        int rightmax = height[right];
-        int water = 0;
+        int leftMax = height[left];
+        int rightMax =  height[right];
+        int water  = 0;
         while(left<right)
         {
-            if(leftmax<rightmax)
+            if(leftMax<rightMax)
             {
                 left++;
-                leftmax = Math.max(leftmax,height[left]);
-                water += leftmax-height[left];
+                leftMax = Math.max(leftMax,height[left]);
+                water += leftMax-height[left];
             }
             else
             {
-                right--;
-                rightmax = Math.max(rightmax,height[right]);
-                water +=rightmax-height[right];
+                right --;
+                rightMax = Math.max(rightMax,height[right]);
+                water += rightMax-height[right];
             }
+           
         }
         return water;
     }
