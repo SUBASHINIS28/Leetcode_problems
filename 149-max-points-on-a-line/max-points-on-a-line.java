@@ -4,37 +4,36 @@ class Solution {
         int n = points.length;
         if(n<=2) return n;
         int max = 0;
-        for(int i = 0;i<n;i++)
+        for(int i=0;i<n;i++)
         {
-            Map<String,Integer> slopeMap = new HashMap<>();
+            Map<String,Integer> slopeMap= new HashMap<>();
             int same = 1;
-            int LocalMax = 0;
-            for(int j=i+1;j<n;j++)
+            int Localmax = 0;
+        for(int j=i+1;j<n;j++)
+        {
+            int dx=points[j][0] - points[i][0];
+            int dy=points[j][1] - points[i][1];
+            if(dx==0 && dy==0)
             {
-
-                int dx = points[j][0] - points[i][0];
-                int dy = points[j][1] - points[i][1];
-                if(dx == 0 && dy== 0)
-                {
-                    same++;
-                }
-                else
-                {
-                    int gcd = gcd(dy,dx);
-                    dy /= gcd;
-                    dx /= gcd;
-                    if(dx<0)
-                    {
-                        dx = -dx;
-                        dy = -dy;
-                    }
-                    String slope = dy + "/" + dx;
-                    slopeMap.put(slope,slopeMap.getOrDefault(slope,0)+1);
-                    LocalMax = Math.max(LocalMax,slopeMap.get(slope));
-
-                }
+                same++;
             }
-            max=Math.max(max,LocalMax+same);
+            else
+            {
+                int gcd = gcd(dy,dx);
+                dy /=gcd;
+                dx /=gcd;
+                if(dx<0)
+                {
+                    dx = -dx;
+                    dy = -dy;
+                }
+                String slope = dy +"/" + dx;
+                slopeMap.put(slope,slopeMap.getOrDefault(slope,0)+1);
+                Localmax = Math.max(Localmax,slopeMap.get(slope));
+            }
+
+        }
+        max = Math.max(max,Localmax+same);
         }
         return max;
 
@@ -43,5 +42,6 @@ class Solution {
     {
         if(b==0) return a;
         return gcd(b,a%b);
+
     }
 }
