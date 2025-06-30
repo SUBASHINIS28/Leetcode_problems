@@ -6,14 +6,14 @@ class Solution {
        int max = 0;
        for(int i=0;i<=n;i++)
        {
-         int currentHeight = (i==n) ?  0 : heights[i];
-         while(!stack.isEmpty() && heights[stack.peek()] > currentHeight)
-         {
-            int height =  heights[stack.pop()];
-            int width  = stack.isEmpty() ? i : i- stack.peek() -1;
-             max  = Math.max(max,height*width);
-         }
-         stack.push(i);
+        int currentHeight = (i==n) ? 0 : heights[i];
+        while(!stack.isEmpty() && heights[stack.peek()] > currentHeight)
+        {
+            int height  = heights[stack.pop()];
+            int width = stack.isEmpty() ? i: i-stack.peek() -1;
+            max = Math.max(max,height*width);
+        }
+        stack.push(i);
        }
        return max;
     }
