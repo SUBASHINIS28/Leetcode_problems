@@ -1,6 +1,5 @@
 class Solution {
-    public String minRemoveToMakeValid(String s) 
-    {
+    public String minRemoveToMakeValid(String s) {
         Stack<Integer> stack = new Stack<>();
         StringBuilder str  = new StringBuilder(s);
         for(int i=0;i<str.length();i++)
@@ -21,7 +20,6 @@ class Solution {
                 {
                     stack.pop();
                 }
-                
             }
         }
         while(!stack.empty())
