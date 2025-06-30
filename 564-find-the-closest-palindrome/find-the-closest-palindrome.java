@@ -1,44 +1,44 @@
-public class Solution {
-    public String nearestPalindromic(String n) {
+class Solution {
+    public String nearestPalindromic(String n) 
+    {
         int len = n.length();
         long num = Long.parseLong(n);
-        Set<Long> candidates = new HashSet<>();
+        Set<Long>candidates = new HashSet<>();
 
-        // Edge case palindromes
-        candidates.add((long)Math.pow(10, len) + 1);      // e.g. 1001 for 999
-        candidates.add((long)Math.pow(10, len - 1) - 1);  // e.g. 99 for 100
+        candidates.add((long)Math.pow(10,len)+1);
+        candidates.add((long)Math.pow(10,len-1)-1);
 
-        // Get prefix to generate palindromes
-        long prefix = Long.parseLong(n.substring(0, (len + 1) / 2));
-        for (long i = prefix - 1; i <= prefix + 1; i++) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(i);
-            String firstHalf = sb.toString();
-
-            String secondHalf;
-            if (len % 2 == 0) {
-                secondHalf = new StringBuilder(firstHalf).reverse().toString();
-            } else {
-                secondHalf = new StringBuilder(firstHalf.substring(0, firstHalf.length() - 1)).reverse().toString();
+        long p = Long.parseLong(n.substring(0,(len+1)/2));
+        for(long i=p-1;i<=p+1;i++)
+        {
+            StringBuilder s = new StringBuilder();
+            s.append(i);
+            String firsthalf = s.toString();
+            String secondhalf;
+            if(len%2==0)
+            {
+                secondhalf = new StringBuilder(firsthalf).reverse().toString();
             }
-
-            String palindrome = firstHalf + secondHalf;
-            candidates.add(Long.parseLong(palindrome));
+            else
+            {
+                secondhalf = new StringBuilder(firsthalf.substring(0,firsthalf.length()-1)).reverse().toString();
+            }
+            String pal = firsthalf + secondhalf;
+            candidates.add(Long.parseLong(pal));
         }
-
         candidates.remove(num);
-
-        // Find the closest
         long md = Long.MAX_VALUE;
         long closest = -1;
-        for (long cand : candidates) {
-            long diff = Math.abs(cand - num);
-            if (diff < md || (diff == md && cand < closest)) {
-                md = diff;
+        for(long cand:candidates)
+        {
+            long dif = Math.abs(cand - num);
+            if(dif<md || (dif==md && cand < closest))
+            {
+                md = dif;
                 closest = cand;
             }
         }
-
         return String.valueOf(closest);
+
     }
 }
