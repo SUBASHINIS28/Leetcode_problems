@@ -1,11 +1,11 @@
 class Solution {
-    public int divide(int dividend, int divisor) 
+    public int divide(int a, int b) 
     {
-        if( dividend == Integer.MIN_VALUE && divisor == -1)
+        if(a==Integer.MIN_VALUE && b==-1)
         {
             return Integer.MAX_VALUE;
         }
-        int result = dividend/divisor;
+        int result = a/b;
         return result;
     }
 }
