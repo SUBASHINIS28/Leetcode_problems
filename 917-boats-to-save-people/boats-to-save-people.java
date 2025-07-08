@@ -9,9 +9,9 @@ class Solution {
         {
             if(people[left]+people[right]<=limit)
             {
-                left++;
-                right--;
                 boat++;
+                right--;
+                left++;
             }
             else
             {
