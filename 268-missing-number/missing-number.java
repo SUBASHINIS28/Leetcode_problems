@@ -1,12 +1,11 @@
 class Solution {
-    public int missingNumber(int[] nums) {
-        int sum=0,gum=0;
-        for(int i=0;i<nums.length;i++){
-            sum+=nums[i];
+    public int missingNumber(int[] nums) 
+    {
+        int xor = 0;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            xor ^= i ^ nums[i];
         }
-        for(int j=0;j<=nums.length;j++){
-            gum+=j;
-        }
-        return gum-sum;
+        return xor ^ n;
     }
 }
