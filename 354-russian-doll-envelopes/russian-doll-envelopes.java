@@ -1,19 +1,30 @@
 class Solution {
-    public int maxEnvelopes(int[][] envelopes) {
-        Arrays.sort(envelopes,(a,b)->a[0]==b[0]?Integer.compare(b[1],a[1]):Integer.compare(a[0],b[0]));
-        List<Integer> ht=new ArrayList<>();
-        for(int arr[]:envelopes){
-            int h=arr[1];
-            int ind=Collections.binarySearch(ht,h);
-            if(ind<0){
-                ind=-(ind+1);
+    public int maxEnvelopes(int[][] envelopes) 
+    {
+        Arrays.sort(envelopes,(a,b)->
+        {
+            if(a[0]== b[0])
+            {
+                return b[1] - a[1];
             }
-            if(ht.size()==ind){
-                ht.add(h);
-            }else{
-                ht.set(ind,h);
+            return a[0] - b[0];
+        });
+        int dp[] = new int[envelopes.length];
+        int len = 0;
+        for(int[] envelope : envelopes)
+        {
+            int height = envelope[1];
+            int index = Arrays.binarySearch(dp,0,len,height);
+            if(index<0)
+            {
+                index = -(index+1);
+            }
+            dp[index] = height;
+            if(index==len)
+            {
+                len++;
             }
         }
-        return ht.size();
+        return len;
     }
 }
