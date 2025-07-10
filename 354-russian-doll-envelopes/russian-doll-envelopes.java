@@ -11,19 +11,20 @@ class Solution {
         });
         int dp[] = new int[envelopes.length];
         int len = 0;
-        for(int[] envelope : envelopes)
+        for(int [] envelope : envelopes)
         {
             int height = envelope[1];
             int index = Arrays.binarySearch(dp,0,len,height);
             if(index<0)
             {
-                index = -(index+1);
+               index = -(index+1);
             }
             dp[index] = height;
             if(index==len)
             {
                 len++;
             }
+
         }
         return len;
     }
