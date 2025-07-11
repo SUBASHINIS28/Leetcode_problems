@@ -1,12 +1,12 @@
 class Solution {
     public String findLongestWord(String s, List<String> dictionary) 
     {
-        String longest = "";
+        String longest="";
         for(String word:dictionary)
         {
             int longlen = longest.length();
             int wordlen = word.length();
-            if(wordlen<longlen || wordlen == longlen && word.compareTo(longest)>0)
+            if(wordlen<longlen || wordlen==longlen && word.compareTo(longest)>0)
             {
                 continue;
             }
@@ -19,13 +19,12 @@ class Solution {
                     break;
                 }
             }
-            if(lpos!=-1)
+            if(lpos != -1)
             {
-                longest=word;
+                longest = word;
             }
+
         }
         return longest;
-
-
     }
 }
