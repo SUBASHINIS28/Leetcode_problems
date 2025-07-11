@@ -10,18 +10,18 @@ class Solution {
             {
                 continue;
             }
-            int lpos=-1;
+            int pos=-1;
             for(int i=0;i<wordlen;i++)
             {
-                lpos=s.indexOf(word.charAt(i),lpos+1);
-                if(lpos==-1)
+                pos = s.indexOf(word.charAt(i),pos+1);
+                if(pos==-1)
                 {
                     break;
                 }
             }
-            if(lpos !=-1)
+            if(pos !=-1)
             {
-                longest=word;
+                longest=  word;
             }
         }
         return longest;
