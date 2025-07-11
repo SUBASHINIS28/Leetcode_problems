@@ -1,16 +1,15 @@
 class Solution {
     public String shortestPalindrome(String s) 
     {
-       int j = 0;
-        for (int i = s.length() - 1; i >= 0; i--) {
-            if (s.charAt(i) == s.charAt(j)) j++;
+        String rev = new StringBuilder(s).reverse().toString();
+        for(int i =0;i<s.length();i++)
+        {
+            if(s.startsWith(rev.substring(i)))
+            {
+                return rev.substring(0,i)+s;
+            }
         }
+        return "";
 
-        if (j == s.length()) return s;
-
-        String suffix = s.substring(j);
-        String prefix = new StringBuilder(suffix).reverse().toString();
-        return prefix + shortestPalindrome(s.substring(0, j)) + suffix;
-    } 
-    
+    }
 }
