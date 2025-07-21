@@ -13,31 +13,30 @@
  *     }
  * }
  */
-class Solution 
-{
+class Solution {
     int cam = 0;
     public int minCameraCover(TreeNode root) 
     {
-       if(countcam(root)==0)
+       if(camcount(root)==0) 
        {
         cam++;
        }
        return cam;
     }
-    public int countcam (TreeNode node)
+    public int camcount(TreeNode node)
     {
         if(node==null)
         {
             return -1;
         }
-        int left=countcam(node.left);
-        int right=countcam(node.right);
+        int left = camcount(node.left);
+        int right = camcount(node.right);
         if(left==0 || right==0)
         {
             cam++;
             return 1;
         }
-        if(left==1||right==1)
+        if(left==1 || right==1)
         {
             return -1;
         }
