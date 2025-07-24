@@ -7,7 +7,7 @@ class Solution {
         {
             for(int j=0;j<grid[0].length;j++)
             {
-                if(grid[i][j]==1)
+                if(grid[i][j] == 1)
                 {
                     island++;
                     if(i>0 && grid[i-1][j]==1)neigh++;
@@ -15,6 +15,6 @@ class Solution {
                 }
             }
         }
-        return island * 4 - neigh * 2;
+        return island * 4 - neigh *2;
     }
 }
