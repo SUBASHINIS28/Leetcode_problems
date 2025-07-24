@@ -15,6 +15,6 @@ class Solution {
                 }
             }
         }
-        return island * 4 - neigh *2;
+        return island*4 - neigh *2;
     }
 }
