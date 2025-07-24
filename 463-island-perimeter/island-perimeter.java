@@ -1,8 +1,8 @@
 class Solution {
     public int islandPerimeter(int[][] grid) 
     {
-        int island=0;
-        int neigh=0;
+        int island = 0;
+        int neigh = 0;
         for(int i=0;i<grid.length;i++)
         {
             for(int j=0;j<grid[0].length;j++)
