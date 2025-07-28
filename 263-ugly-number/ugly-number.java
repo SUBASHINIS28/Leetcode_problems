@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isUgly(int n) 
+    public boolean isUgly(int n)
     {
         if(n<=0)
         {
