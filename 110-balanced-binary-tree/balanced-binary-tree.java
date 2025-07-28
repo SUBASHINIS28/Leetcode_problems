@@ -14,9 +14,9 @@
  * }
  */
 class Solution {
-    public boolean isBalanced(TreeNode root) 
+    public boolean isBalanced(TreeNode root)
     {
-        return checkheight(root) !=-1;      
+        return checkheight(root) !=-1;
     }
     public int checkheight(TreeNode node)
     {
@@ -26,8 +26,7 @@ class Solution {
         }
         int left=checkheight(node.left);
         int right=checkheight(node.right);
-        if(left==-1||right==-1)
-        {
+        if(left==-1 || right==-1){
             return -1;
         }
         if(Math.abs(left-right)>1)
