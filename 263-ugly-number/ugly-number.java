@@ -1,5 +1,5 @@
 class Solution {
-    public boolean isUgly(int n)
+    public boolean isUgly(int n) 
     {
         if(n<=0)
         {
@@ -15,7 +15,7 @@ class Solution {
         }
         while(n%5==0)
         {
-           n/=5;
+            n/=5;
         }
         return n==1;
     }
