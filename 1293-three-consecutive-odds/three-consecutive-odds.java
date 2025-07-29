@@ -1,22 +1,22 @@
 class Solution {
     public boolean threeConsecutiveOdds(int[] arr)
     {
-        int count=0;
-        for(int num:arr)
+       int count=0;
+       for(int num:arr)
+       {
+        if(num%2==1)
         {
-            if(num%2==1)
+            count++;
+            if(count==3)
             {
-                count++;
-                if(count==3)
-                {
-                    return true;
-                }
-            }
-            else
-            {
-               count=0;
+                return true;
             }
         }
-        return false;
+        else
+        {
+            count=0;
+        }
+    }
+    return false;
     }
 }
