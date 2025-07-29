@@ -1,7 +1,7 @@
 class Solution {
     public boolean isPalindrome(int x) 
     {
-        String s =  Integer.toString(x);
+        String s = Integer.toString(x);
         int left = 0;
         int right = s.length()-1;
         while(left<right)
@@ -13,6 +13,6 @@ class Solution {
             }
         }
         return true;
-            
+
     }
 }
