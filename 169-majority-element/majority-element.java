@@ -9,7 +9,7 @@ class Solution {
             {
                 candidate = num;
             }
-            count +=(candidate==num) ? 1 :-1;
+            count +=(num==candidate) ? 1 :-1;
         }
         return candidate;
     }
