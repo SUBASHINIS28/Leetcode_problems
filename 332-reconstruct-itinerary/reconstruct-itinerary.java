@@ -1,36 +1,28 @@
 class Solution {
-    private Map<String, List<String>> flightGraph; // Represents flights from one airport to another
-    private List<String> travelItinerary; // Stores the final travel itinerary
+    Map<String, PriorityQueue<String>> graph = new HashMap<>();
+    LinkedList<String> result = new LinkedList<>();
 
     public List<String> findItinerary(List<List<String>> tickets) {
-        flightGraph = new HashMap<>();
-        travelItinerary = new ArrayList<>() ;
         for (List<String> ticket : tickets) {
-            String fromAirport = ticket.get(0);
-            String toAirport = ticket.get(1);
-            flightGraph.computeIfAbsent(fromAirport, k -> new ArrayList<>()).add(toAirport);
-        }
-
-        for (List<String> destinations : flightGraph.values()) {
-            destinations.sort(Collections.reverseOrder());
-        }
-
-        Stack<String> dfsStack = new Stack<>();
-        dfsStack.push("JFK");
-
-        while (!dfsStack.isEmpty()) {
-            String currentAirport = dfsStack.peek();
-            List<String> destinations = flightGraph.get(currentAirport);
-
-            if (destinations != null && !destinations.isEmpty()) {
-                String nextDestination = destinations.remove(destinations.size() - 1);
-                dfsStack.push(nextDestination);
+            String from = ticket.get(0);
+            String to = ticket.get(1);
+            if (graph.containsKey(from)) {
+                graph.get(from).offer(to);
             } else {
-                travelItinerary.add(currentAirport);
-                dfsStack.pop();
+                PriorityQueue<String> q = new PriorityQueue<>();
+                q.offer(to);
+                graph.put(from, q);
             }
         }
-        Collections.reverse(travelItinerary);
-        return travelItinerary;
+        dfs("JFK");
+        return result;
+    }
+
+    private void dfs(String airport) {
+        PriorityQueue<String> arrivals = graph.get(airport);
+        while (arrivals != null && !arrivals.isEmpty()) {
+            dfs(arrivals.poll());
+        }
+        result.addFirst(airport);
     }
 }
