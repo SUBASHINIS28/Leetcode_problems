@@ -1,31 +1,39 @@
+//1ms
 class Solution {
-    public boolean solve(String s1, String s2, String s3, int ind1, int ind2, int[][] dp) {
-        if (ind1 + ind2 == s3.length()) return true;
-        if (dp[ind1][ind2] != -1) return dp[ind1][ind2] == 1;
-        boolean ans = false;
-        
-        if (ind1 < s1.length() && s1.charAt(ind1) == s3.charAt(ind1 + ind2)) {
-            ans |= solve(s1, s2, s3, ind1 + 1, ind2, dp);
-        }
-        
-        if (ind2 < s2.length() && s2.charAt(ind2) == s3.charAt(ind1 + ind2)) {
-            ans |= solve(s1, s2, s3, ind1, ind2 + 1, dp);
-        }
-        
-        dp[ind1][ind2] = ans ? 1 : 0;
-        return ans;
-    }
+    private boolean[][] invalid;
+    private char[] c1;
+    private char[] c2;
+    private char[] c3;
     
     public boolean isInterleave(String s1, String s2, String s3) {
-        if (s1.length() + s2.length() != s3.length()) {
+        c1 = s1.toCharArray();
+        c2 = s2.toCharArray();
+        c3 = s3.toCharArray();
+        
+        int m = s1.length(),n=s2.length();
+        
+        if(m+n != s3.length())
             return false;
-        }
         
-        int[][] dp = new int[s1.length() + 1][s2.length() + 1];
-        for (int i = 0; i <= s1.length(); i++) {
-            Arrays.fill(dp[i], -1);
-        }
+        invalid = new boolean[m+1][n+1];
         
-        return solve(s1, s2, s3, 0, 0, dp);
+        return dfs(0,0,0);
+    }
+    
+    public boolean dfs(int i, int j, int k){
+        if(invalid[i][j])
+            return false;
+        
+        if(k == c3.length)
+            return true;
+        
+        boolean valid = 
+            i<c1.length && c1[i] == c3[k] && dfs(i+1,j,k+1) || 
+            j<c2.length && c2[j] == c3[k] && dfs(i,j+1,k+1);
+        
+        if(!valid)
+            invalid[i][j] = true;
+        
+        return valid;
     }
 }
