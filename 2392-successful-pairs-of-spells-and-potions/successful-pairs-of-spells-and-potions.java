@@ -1,30 +1,28 @@
-import java.util.*;
-
 class Solution {
     public int[] successfulPairs(int[] spells, int[] potions, long success) {
-        Arrays.sort(potions);
-        int n = spells.length;
-        int m = potions.length;
-        int[] ans = new int[n];
-        
-        for (int i = 0; i < n; i++) {
-            long sp = spells[i];
-            int left = 0, right = m - 1;
-            int index = -1;
-            
-            while (left <= right) {
-                int mid = (left + right) / 2;
-                if (sp * potions[mid] >= success) {
-                    index = mid;
-                    right = mid - 1;
-                } else {
-                    left = mid + 1;
-                }
-            }
-            
-            ans[i] = (index == -1) ? 0 : (m - index);
+        int m = spells.length;
+        int n = potions.length;
+        int max = 0;
+        int[] res = new int[m];
+        for(int i=0; i<n; i++){
+            max = Math.max(max, potions[i]);
         }
-        
-        return ans;
+        int[] map = new int[max+1];
+        for(int i=0; i<n; i++){
+            map[potions[i]]++;
+        }
+        int sum = 0;
+        for(int i=max; i>=0; i--){
+            sum+=map[i];
+            map[i] = sum;
+        }
+        for(int i=0; i<m; i++){
+            int spell = spells[i];
+            long index = (success + spell -1)/spell;
+            if(index <= max){
+                res[i] = map[(int) index];
+            } 
+        }
+        return res;
     }
 }
