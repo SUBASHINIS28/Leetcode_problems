@@ -4,10 +4,9 @@ class Solution {
         int[] arr=new int[2];
         int i=0;
         for(int num:nums){
-            if(set.contains(num)){
+            if(!set.add(num)){
                 arr[i++]=num;
             }
-            set.add(num);
         }
         return arr;
     }
