@@ -1,10 +1,12 @@
 class Solution {
     public int[] getSneakyNumbers(int[] nums) {
-        Set<Integer> set=new HashSet<>();
+        int n=nums.length;
+        int[] freq=new int[n];
         int[] arr=new int[2];
         int i=0;
         for(int num:nums){
-            if(!set.add(num)){
+            freq[num]++;
+            if(freq[num]==2){
                 arr[i++]=num;
             }
         }
