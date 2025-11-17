@@ -1,36 +1,26 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 class Solution {
     public boolean canIWin(int maxChoosableInteger, int desiredTotal) {
-        if (desiredTotal == 0) {
-            return true;
-        }
-        if ((maxChoosableInteger * (maxChoosableInteger + 1)) / 2 < desiredTotal) {
-            return false;
-        }
-        
+        if (desiredTotal <= 0) return true;
+        int total = (maxChoosableInteger * (maxChoosableInteger + 1)) / 2;
+        if (total < desiredTotal) return false;
         Map<Integer, Boolean> memo = new HashMap<>();
-        return canIWinHelper(maxChoosableInteger, desiredTotal, 0, memo);
+        return dfs(desiredTotal, 0, maxChoosableInteger, memo);
     }
 
-    private boolean canIWinHelper(int maxChoosableInteger, int desiredTotal, int usedNumbers, Map<Integer, Boolean> memo) {
-        if (memo.containsKey(usedNumbers)) {
-            return memo.get(usedNumbers);
-        }
-        
-        for (int i = 1; i <= maxChoosableInteger; i++) {
-            int currentBit = 1 << i;
-            if ((usedNumbers & currentBit) == 0) { 
-                if (desiredTotal - i <= 0 || 
-                    !canIWinHelper(maxChoosableInteger, desiredTotal - i, usedNumbers | currentBit, memo)) {
-                    memo.put(usedNumbers, true);
+    private boolean dfs(int target, int mask, int max, Map<Integer, Boolean> memo) {
+        if (memo.containsKey(mask)) return memo.get(mask);
+        for (int i = 1; i <= max; i++) {
+            int bit = 1 << (i - 1);
+            if ((mask & bit) == 0) {
+                if (i >= target || !dfs(target - i, mask | bit, max, memo)) {
+                    memo.put(mask, true);
                     return true;
                 }
             }
         }
-        
-        memo.put(usedNumbers, false);
+        memo.put(mask, false);
         return false;
     }
 }
